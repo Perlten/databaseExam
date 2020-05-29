@@ -1,0 +1,10 @@
+# Create index
+CREATE INDEX FOR (c:City) on (c.name)
+
+# Show all index for database
+CALL db.indexes();
+
+# dijkstra
+MATCH (from:City{name:'Copenhagen'}), (to:City{name:'Aalborg'})
+CALL apoc.algo.dijkstra(from, to, 'Road', 'time') yield path as path, weight as weight
+RETURN path, weight
